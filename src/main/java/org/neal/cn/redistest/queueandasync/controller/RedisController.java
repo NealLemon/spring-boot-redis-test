@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/redis")
@@ -39,7 +40,6 @@ public class RedisController {
         String uuid = UUID.randomUUID().toString();
         //将要任务的ID放入redis 待处理任务消息队列
         redisTemplate.opsForList().leftPush(REDIS_MESSAGE,uuid);
-
 
         DeferredResult<String> deferredResult = new DeferredResult<>();
 

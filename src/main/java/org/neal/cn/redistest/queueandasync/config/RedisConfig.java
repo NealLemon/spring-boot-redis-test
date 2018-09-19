@@ -17,7 +17,6 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
  */
 @Configuration
 public class RedisConfig {
-
     /**
      *  定义 StringRedisTemplate ，指定序列化和反序列化的处理类
      * @param redisConnectionFactory
@@ -28,7 +27,6 @@ public class RedisConfig {
         StringRedisTemplate stringRedisTemplate = new StringRedisTemplate(redisConnectionFactory);
         Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Object>(Object.class);
         ObjectMapper objectMapper = new ObjectMapper();
-
         //配置过滤类型
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         //默认允许序列化类型

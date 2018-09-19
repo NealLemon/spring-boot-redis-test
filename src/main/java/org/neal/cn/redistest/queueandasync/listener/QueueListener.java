@@ -42,6 +42,8 @@ public class QueueListener implements ApplicationListener<ContextRefreshedEvent>
                 logger.info("读取消息队列完成订单 ");
                 //从完成的队列中按顺序取出完成的任务ID
                 Object uuid = redisTemplate.opsForList().rightPop(REDIS_COMPLATE,5000,TimeUnit.SECONDS);
+
+
                 //为空判断
                 if(null == uuid) {
                     try {
